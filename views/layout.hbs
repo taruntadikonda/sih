@@ -1,0 +1,134 @@
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  
+<body>
+<h1 class="head">
+    Maps
+</h1>
+    
+  
+    
+    <div id="map"></div>
+    <script>
+      var a={{title1}};
+      var b={{title2}};
+      var c={{title3}};
+      var d={{title4}};
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: {lat: 28.2500, lng: 77.500},
+          mapTypeId: 'terrain'
+        });
+        document.write(a);
+
+        var flightPlanCoordinates = [
+          {lat: a, lng: b},
+          {lat: c, b},
+          {lat: c, lng: d},
+          {lat: a, lng:d},
+          {lat: a, lng: b}
+          
+        ];
+        var flightPath = new google.maps.Polyline({
+          path: flightPlanCoordinates,
+          geodesic: true,
+          strokeColor: '#AF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+        /*
+        var flightPlanCoordinates1 = [
+          {lat: 28.5000, lng: 77.0000},
+          {lat: 28.5000, lng: 77.5000},
+          {lat: 28.5000, lng: 78.0000},
+          {lat: 28.5000, lng: 78.5000},
+          
+        ];
+        var flightPath1 = new google.maps.Polyline({
+          path: flightPlanCoordinates1,
+          geodesic: true,
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+
+        var flightPlanCoordinates2 = [
+          {lat: 29.0000, lng: 77.0000},
+          {lat: 29.0000, lng: 77.5000},
+          {lat: 29.0000, lng: 78.0000},
+          {lat: 29.0000, lng: 78.5000},
+          
+        ];
+
+        var flightPath2 = new google.maps.Polyline({
+          path: flightPlanCoordinates2,
+          geodesic: true,
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+        var flightPlanCoordinates3 = [
+          {lat: 28.0000, lng: 77.5000},
+          {lat: 28.5000, lng: 77.5000},
+          {lat: 29.0000, lng: 77.5000},
+          {lat: 29.5000, lng: 77.5000},
+          
+        ];
+
+        var flightPath3 = new google.maps.Polyline({
+          path: flightPlanCoordinates3,
+          geodesic: true,
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+        
+        
+        var flightPlanCoordinates4= [
+          {lat: 28.0000, lng: 78.0000},
+          {lat: 28.5000, lng: 78.0000},
+          {lat: 29.0000, lng: 78.0000},
+          {lat: 29.5000, lng: 78.0000},
+          
+        ];
+
+        var flightPath4 = new google.maps.Polyline({
+          path: flightPlanCoordinates4,
+          geodesic: true,
+          strokeColor: '#FF0000',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });*/
+        
+        flightPath.setMap(map);
+       // flightPath1.setMap(map);
+        //flightPath2.setMap(map);
+        //flightPath3.setMap(map);
+        //flightPath4.setMap(map);
+      }
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqPCOM3R3PMaUMUGxa-MJ34BOSXWfxL7g&callback=initMap">
+    </script>
+  </body>
+</html>
+    
+</body>
