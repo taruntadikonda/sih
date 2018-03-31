@@ -18,9 +18,9 @@
   </head>
   
 <body>
-<h1 class="head">
+  <h1 class="head">
     Maps
-</h1>
+  </h1>
     
   
     
@@ -30,14 +30,31 @@
       var b={{title2}};
       var c={{title3}};
       var d={{title4}};
-      function initMap() {
+      var e=(c-a)/3;
+      var f=(d-b)/3;
+
+
+
+      function initMap() 
+      {
+        var locations = [
+        [a+5*(e/2), b+(f/2), 0],
+        [ a+5*(e/2), b+3*(f/2), 1],
+        [ a+5*(e/2),b+5*(f/2), 2],
+    ];
+        //var myLatLng = {lat: a+5*(e/2), lng: b+(f/2)};
+        //var myLatLng = {lat: a+5*(e/2), lng: b+3*(f/2)};
+        //var myLatLng = {lat: a+5*(e/2), lng: b+5*(f/2)};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 8,
-          center: {lat: 28.2500, lng: 77.500},
-          mapTypeId: 'terrain'
+          center: {lat: a+e, lng: b+f},
+          mapTypeId: google.maps.MapTypeId.ROADMAP
         });
-        document.write(a);
+        
+        var infowindow = new google.maps.InfoWindow();
+        
 
+	      var marker, i;
         var flightPlanCoordinates = [
           {lat: a, lng: b},
           {lat: c, lng:b},
@@ -53,12 +70,12 @@
           strokeOpacity: 1.0,
           strokeWeight: 2
         });
-        /*
+        
         var flightPlanCoordinates1 = [
-          {lat: 28.5000, lng: 77.0000},
-          {lat: 28.5000, lng: 77.5000},
-          {lat: 28.5000, lng: 78.0000},
-          {lat: 28.5000, lng: 78.5000},
+          {lat: a+e, lng:b },
+          {lat: a+e, lng:b+f },
+          {lat: a+e, lng:b+2*f },
+          {lat: a+e, lng: b+3*f},
           
         ];
         var flightPath1 = new google.maps.Polyline({
@@ -70,10 +87,10 @@
         });
 
         var flightPlanCoordinates2 = [
-          {lat: 29.0000, lng: 77.0000},
-          {lat: 29.0000, lng: 77.5000},
-          {lat: 29.0000, lng: 78.0000},
-          {lat: 29.0000, lng: 78.5000},
+          {lat: a+2*e, lng:b },
+          {lat: a+2*e, lng:b+f },
+          {lat: a+2*e, lng:b+2*f },
+          {lat: a+2*e, lng: b+3*f},
           
         ];
 
@@ -84,11 +101,12 @@
           strokeOpacity: 1.0,
           strokeWeight: 2
         });
+        
         var flightPlanCoordinates3 = [
-          {lat: 28.0000, lng: 77.5000},
-          {lat: 28.5000, lng: 77.5000},
-          {lat: 29.0000, lng: 77.5000},
-          {lat: 29.5000, lng: 77.5000},
+          {lat:a , lng:b+f },
+          {lat:a+e , lng:b+f },
+          {lat:a+2*e, lng:b+f },
+          {lat:a+3*e , lng:b+f },
           
         ];
 
@@ -102,10 +120,10 @@
         
         
         var flightPlanCoordinates4= [
-          {lat: 28.0000, lng: 78.0000},
-          {lat: 28.5000, lng: 78.0000},
-          {lat: 29.0000, lng: 78.0000},
-          {lat: 29.5000, lng: 78.0000},
+          {lat: a, lng:b+2*f },
+          {lat: a+e, lng:b+2*f},
+          {lat: a+2*e, lng:b+2*f },
+          {lat: a+3*e, lng:b+2*f },
           
         ];
 
@@ -115,20 +133,35 @@
           strokeColor: '#FF0000',
           strokeOpacity: 1.0,
           strokeWeight: 2
-        });*/
+        });
+        for (i = 0; i < locations.length; i++) {
+		      marker = new google.maps.Marker({
+			    position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+			map: map
+		});
+
+		google.maps.event.addListener(marker, 'click', (function (marker, i) {
+			return function () {
+				//infowindow.setContent(locations[i][0]);
+				infowindow.open(map, marker);
+			}
+		})(marker, i));
+	}
         
         flightPath.setMap(map);
-       // flightPath1.setMap(map);
-        //flightPath2.setMap(map);
-        //flightPath3.setMap(map);
-        //flightPath4.setMap(map);
+        flightPath1.setMap(map);
+        flightPath2.setMap(map);
+        flightPath3.setMap(map);
+        flightPath4.setMap(map);
+          
+          
       }
-
-    </script>
+      
+  </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqPCOM3R3PMaUMUGxa-MJ34BOSXWfxL7g&callback=initMap">
     </script>
-  </body>
-</html>
-    
 </body>
+
+    
+

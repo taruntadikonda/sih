@@ -22,10 +22,11 @@ app.get('/',function(req,res)
 app.post('/map',function(req,res)
 {
 
-var lat1=req.body.lat1;
-var long1=req.body.long1;
-var lat2=req.body.lat2;
-var long2=req.body.long2;
+var lat1=req.body.lat1;   //a
+var long1=req.body.long1;   //b
+var lat2=req.body.lat2;     //c
+var long2=req.body.long2;   //d
+//b+(f/2)=>(a+3*(e)==>a)
 console.log(lat1+" "+long1+" "+lat2+" "+long2);
 res.render('layout',{title1:lat1,title2:long1,title3:lat2,title4:long2});
 });
