@@ -1,9 +1,10 @@
+var xlsx = require('node-xlsx');
 var express = require('express');
 var mqtt=require('mqtt');
 var arr=[];
 var client  = mqtt.connect('mqtt://mqtt.wevothings.com');
 var app= express.Router();
-
+var array = xlsx.parse(__dirname + '/q.xlsx');
 /*
 client.on('connect',function()
 {
